@@ -176,7 +176,7 @@ async function main() {
     const requiredCodeownerEntities = await getRequiredCodeowners(changedFiles, repo.data, pr, octokit);
     console.info(`Required codeowners: ${Object.keys(requiredCodeownerEntities).join(', ')}`);
 
-    const orgTeams = [];
+    let orgTeams = [];
 
     if (process.env["INPUT_LIMIT_ORG_TEAMS_TO_CODEOWNERS_FILE"] === "true") {
         const requiredCodeownerEntitySlugs = new Set(Object.keys(requiredCodeownerEntities));
